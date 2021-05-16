@@ -51,7 +51,7 @@ public class DurationAndScore : MonoBehaviour
             timeRemaining = timeRemaining - 60;
         }
 
-        secondsRemaining = timeRemaining;
+        secondsRemaining = timeRemaining;   
 
         if (secondsRemaining <= 9)
         {
