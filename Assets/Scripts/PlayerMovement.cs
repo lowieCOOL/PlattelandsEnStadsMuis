@@ -6,7 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     bool isVisible1;
     bool isVisible2;
-    bool isFrozen;
+    public bool isFrozen;
     int duration;
     int startTime;
     Vector3 startPosition;
