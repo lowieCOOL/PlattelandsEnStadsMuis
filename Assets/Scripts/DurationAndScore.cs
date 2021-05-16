@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class DurationAndScore : MonoBehaviour
@@ -9,7 +10,6 @@ public class DurationAndScore : MonoBehaviour
     int chosenTimeInSeconds;
     int minutesRemaining;
     int secondsRemaining;
-    int adjustedSecondsRemaining;
     int startingTime;
     int currentTime;
     int timeInGame;
@@ -27,8 +27,8 @@ public class DurationAndScore : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        UpdateDurationCounter();
         currentTime = (int)Time.time;
+        UpdateDurationCounter();
     }
 
     void UpdateDurationCounter()
@@ -36,6 +36,12 @@ public class DurationAndScore : MonoBehaviour
         timeInGame = currentTime - startingTime;
         timeRemaining = chosenTimeInSeconds - timeInGame;
 
+        if (timeRemaining <= 0)
+        {
+            Cursor.visible = false;
+            LoadNextScene();
+        }
+        
         minutesRemaining = 0;
         secondsRemaining = 0;
 
@@ -56,5 +62,12 @@ public class DurationAndScore : MonoBehaviour
             durationCounter.text = minutesRemaining + ":" + secondsRemaining;
         }
 
+    }
+
+    void LoadNextScene()
+    {
+        int currentScene = SceneManager.GetActiveScene().buildIndex;
+        int nextScene = currentScene + 1;
+        SceneManager.LoadScene(nextScene);
     }
 }

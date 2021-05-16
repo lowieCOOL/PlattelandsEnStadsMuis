@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] float MovementSpeed = 7.5f;
-    [SerializeField] float RotationSpeed = 7.5f;
+    //[SerializeField] float RotationSpeed = 7.5f;
 
     // Start is called before the first frame update
     void Start()
