@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Pantry Pad
   - Collect Pad
+  - Lamp Collider
   layers:
   - Default
   - TransparentFX
@@ -15,7 +16,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - Player
   - 
   - 
   - 

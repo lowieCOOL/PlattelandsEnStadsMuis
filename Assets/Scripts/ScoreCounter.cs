@@ -21,7 +21,7 @@ public class ScoreCounter : MonoBehaviour
             cheese.GetComponent<MeshRenderer>().enabled = true;
             isCarryingCheese = true;
         }
-        else if (collision.collider.tag == "Collect Pad")
+        else if (collision.collider.tag == "Collect Pad" && isCarryingCheese)
         {
             cheese.GetComponent<MeshRenderer>().enabled = false;
             isCarryingCheese = false;
