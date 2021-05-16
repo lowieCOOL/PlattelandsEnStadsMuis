@@ -14,7 +14,10 @@ public class DurationAndScore : MonoBehaviour
     int currentTime;
     int timeInGame;
     int timeRemaining;
-    [SerializeField] Text durationCounter; 
+    int score;
+    [SerializeField] Text durationCounter;
+    [SerializeField] Text scoreCounter;
+    [SerializeField] GameObject player;
     void Start()
     {
         startingTime = (int)Time.time;
@@ -29,6 +32,7 @@ public class DurationAndScore : MonoBehaviour
     {
         currentTime = (int)Time.time;
         UpdateDurationCounter();
+        UpdateScoreCounter();
     }
 
     void UpdateDurationCounter()
@@ -38,7 +42,6 @@ public class DurationAndScore : MonoBehaviour
 
         if (timeRemaining <= 0)
         {
-            Cursor.visible = false;
             LoadNextScene();
         }
         
@@ -66,8 +69,19 @@ public class DurationAndScore : MonoBehaviour
 
     void LoadNextScene()
     {
+        PlayerPrefs.SetInt("Score", score);
+        Cursor.visible = true;
         int currentScene = SceneManager.GetActiveScene().buildIndex;
         int nextScene = currentScene + 1;
         SceneManager.LoadScene(nextScene);
+    }
+
+    void UpdateScoreCounter()
+    {
+
+        ScoreCounter SCscript = player.GetComponent<ScoreCounter>();
+        score = SCscript.score;
+        string stringedScore = "" + score;
+        scoreCounter.text = stringedScore;
     }
 }

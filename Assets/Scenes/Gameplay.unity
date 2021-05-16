@@ -536,6 +536,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   durationCounter: {fileID: 809960517}
+  scoreCounter: {fileID: 369418239}
+  player: {fileID: 1925636790}
 --- !u!4 &141689348
 Transform:
   m_ObjectHideFlags: 0
@@ -3066,6 +3068,7 @@ GameObject:
   - component: {fileID: 1925636792}
   - component: {fileID: 1925636796}
   - component: {fileID: 1925636791}
+  - component: {fileID: 1925636797}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -3180,6 +3183,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
+--- !u!114 &1925636797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1925636790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f93120cbd5feae84cb7946fcd32cf1fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cheese: {fileID: 794133044}
+  score: 0
 --- !u!1 &1962459083
 GameObject:
   m_ObjectHideFlags: 0

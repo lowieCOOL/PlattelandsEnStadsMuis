@@ -4,15 +4,28 @@ using UnityEngine;
 
 public class ScoreCounter : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] GameObject cheese;
+    public int score;
+    bool isCarryingCheese;
+
+    private void Start()
     {
-        
+        cheese.GetComponent<MeshRenderer>().enabled = false;
+        isCarryingCheese = false;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnCollisionEnter(Collision collision)
     {
-        
+        if (collision.collider.tag == "Pantry Pad")
+        {
+            cheese.GetComponent<MeshRenderer>().enabled = true;
+            isCarryingCheese = true;
+        }
+        else if (collision.collider.tag == "Collect Pad")
+        {
+            cheese.GetComponent<MeshRenderer>().enabled = false;
+            isCarryingCheese = false;
+            score++;
+        }
     }
 }
