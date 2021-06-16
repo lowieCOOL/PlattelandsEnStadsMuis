@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     int startTime;
     Vector3 startPosition;
     Quaternion startRotation;
+    Rigidbody rb;
     [SerializeField] GameObject visibilityCheck1;
     [SerializeField] GameObject visibilityCheck2;
     [SerializeField] float MovementSpeed = 7.5f;
@@ -26,6 +27,8 @@ public class PlayerMovement : MonoBehaviour
 
         light.GetComponent<Light>().enabled = false;
         isFrozen = false;
+
+        rb = GetComponent<Rigidbody>();
 
         duration = (int)Random.Range(lightToggleMin, lightToggleMax);
         startTime = (int)Time.time;
@@ -53,10 +56,25 @@ public class PlayerMovement : MonoBehaviour
 
     void MovePlayer()
     {
-        float xValue = Input.GetAxis("Horizontal") * Time.deltaTime * MovementSpeed;
-        float zValue = Input.GetAxis("Vertical") * Time.deltaTime * MovementSpeed;
+        if (Input.GetKey(KeyCode.Q))
+        {
+            rb.AddRelativeForce(Vector3.left * MovementSpeed * Time.deltaTime);
+        }
+        else if (Input.GetKey(KeyCode.D))
+        {
+            rb.AddRelativeForce(Vector3.right * MovementSpeed * Time.deltaTime);
+        }
+        else if (Input.GetKey(KeyCode.Z))
+        {
+            Debug.Log("Forward");
+            rb.AddRelativeForce(Vector3.forward * MovementSpeed * Time.deltaTime);
+        }
+        else if (Input.GetKey(KeyCode.S))
+        {
+            rb.AddRelativeForce(Vector3.back * MovementSpeed * Time.deltaTime);
+        }
 
-        transform.Translate(xValue, 0, zValue);
+
     }
 
     void RotatePlayer()
